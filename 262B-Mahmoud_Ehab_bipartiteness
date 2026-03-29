@@ -1,0 +1,36 @@
+import java.util.*;
+
+public class Mahmoud_Ehab_bipartiteness {
+    static long zeroCount = 0;
+    static long oneCount = 0;
+    public static void dfs_scout(ArrayList<ArrayList<Integer>> g, int cur,int parent, int color){
+        if(color == 0)
+            zeroCount++;
+        else
+            oneCount++;
+        for(int neigh : g.get(cur)){
+            if(parent != neigh){
+                dfs_scout(g, neigh, cur, 1-color);
+            }
+
+        }
+    }
+    public static void main(String args[]){
+        Scanner sd = new Scanner(System.in);
+        int n = sd.nextInt();
+        ArrayList<ArrayList<Integer>> g = new ArrayList<>();
+        for(int i = 0; i <= n; i++){
+            g.add(new ArrayList<>());
+        }
+        for(int i = 1; i <= n-1; i++){
+            int u = sd.nextInt();
+            int v = sd.nextInt();
+            g.get(u).add(v);
+            g.get(v).add(u);
+        }
+        dfs_scout(g, 1, 0, 0);
+        long total = zeroCount * oneCount;
+        long possibility = total - (n-1);
+        System.out.println(possibility);
+    }
+}
