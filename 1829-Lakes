@@ -12,6 +12,12 @@ public class Lakes_1829 {
         vol += dfs_vol(grid, visited, x, y-1);
         return vol;
     }
+    public static int bfs_vol(int[][] grid, boolean[][] visited, int x, int y){
+        Queue<int[]> storage = new LinkedList<>();
+        storage.add(new int[]{x, y});
+        int[]
+    }
+
     public static void main(String args[]){
         Scanner sd = new Scanner(System.in);
         int t = sd.nextInt();
